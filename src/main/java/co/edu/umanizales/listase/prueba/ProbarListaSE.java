@@ -33,7 +33,7 @@ public class ProbarListaSE {
         System.out.println("finalizao");
 
 //        listaPerros.ordenarMasculino();
-        listaPerros.eliminarNodoporId(1);
+        System.out.println(listaPerros.buscarPosicion(3));
         listaPerros.mostrarLista();
     }
 

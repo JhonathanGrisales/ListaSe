@@ -148,20 +148,18 @@ public class ListaSE {
                 //Recorro la lista 
                 while (temporal != null && temporal.getDato().getNumero() != id) {
 
-                    
-
                     anterior = anterior.getSiguiente();
                     temporal = temporal.getSiguiente();
 
                 }
-                
-                if ( temporal.getDato().getNumero() == id) {
 
-                        //DEJAMOS DE APUNTAR EL NODO PARA ELIMINARLO 
-                        anterior.setSiguiente(temporal.getSiguiente());
-                        temporal = anterior.getSiguiente();
+                if (temporal.getDato().getNumero() == id) {
 
-                    }
+                    //DEJAMOS DE APUNTAR EL NODO PARA ELIMINARLO 
+                    anterior.setSiguiente(temporal.getSiguiente());
+                    temporal = anterior.getSiguiente();
+
+                }
 
             }
 
@@ -250,6 +248,30 @@ public class ListaSE {
         }
         return null;
 
+    }
+
+    public Perro buscarPosicion(int buscar) {
+
+        if (cabeza != null) {
+
+            int cont = 1;
+
+            Nodo temp = cabeza;
+            Nodo encontrado = null;
+
+            while (buscar != cont) {
+
+                temp = temp.getSiguiente();// Ayudante pase l siguiente perro
+                cont++;
+
+            }
+
+            encontrado = temp;
+            return encontrado.getDato();
+
+        }
+
+        return null;
     }
 
 }
