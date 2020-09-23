@@ -180,10 +180,12 @@ public class ListaSE {
 
             while (temp != null)//RECORRE DE PRINCIPIO A FIN
             {
-                if (temp.getDato().getSexo() == "M") {
+
+                if ("M".equals(temp.getDato().getSexo())) {
 
                     listaTemporal.adicionarNodoAlInicio(temp.getDato());
-                } else {
+                    
+                } else  {
 
                     listaTemporal.adicionarNodo(temp.getDato());
                 }
@@ -208,7 +210,7 @@ public class ListaSE {
 
             while (temp != null)//RECORRE DE PRINCIPIO A FIN
             {
-                if (temp.getDato().getSexo() == "F") {
+                if ("F".equals(temp.getDato().getSexo())) {
 
                     listaTemporal.adicionarNodoAlInicio(temp.getDato());
                 } else {
@@ -250,25 +252,19 @@ public class ListaSE {
 
     }
 
-    public Perro buscarPosicion(int buscar) {
+    public Perro buscarPosicion(int posicion) {
 
         if (cabeza != null) {
 
+            Nodo temp = cabeza;
             int cont = 1;
 
-            Nodo temp = cabeza;
-            Nodo encontrado = null;
-
-            while (buscar != cont) {
+            while (posicion != cont) {
 
                 temp = temp.getSiguiente();// Ayudante pase l siguiente perro
                 cont++;
-
             }
-
-            encontrado = temp;
-            return encontrado.getDato();
-
+            return temp.getDato();
         }
 
         return null;
