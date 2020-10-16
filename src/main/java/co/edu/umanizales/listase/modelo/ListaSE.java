@@ -101,6 +101,7 @@ public class ListaSE {
      * Método que permite intercambiar los datos de los extremos de la lista *
      */
     public void intercambiarExtremos() {
+
         if (cabeza != null) {
             Nodo temp = cabeza;
             while (temp.getSiguiente() != null) {
@@ -114,6 +115,7 @@ public class ListaSE {
     }
 
     public void invertir() {
+
         if (cabeza != null) {
             ListaSE listaTemporal = new ListaSE();
             Nodo temp = cabeza;
@@ -170,6 +172,48 @@ public class ListaSE {
 
     }
 
+    public void eliminarPorPosicion(int posicion) {
+
+        if (cabeza != null) {
+
+            //SI EL ELEMENTO A ELIMINAR ESTA EN LA CABEZA
+            if (posicion == 1) {
+
+                Nodo temp = cabeza.getSiguiente();
+                cabeza = temp;
+
+//SI EL ELEMENTO A ELIMINAR NO ESTA EN LA CABEZA
+            } else {
+
+                Nodo anterior, temporal;
+                anterior = cabeza;
+                temporal = cabeza.getSiguiente();
+                int cont = 1;
+
+                //Recorro la lista 
+                while (temporal != null && cont != posicion - 1) {
+
+                    anterior = anterior.getSiguiente();
+                    temporal = temporal.getSiguiente();
+                    cont++;
+
+                }
+                if (cont == posicion - 1) {
+
+                    //DEJAMOS DE APUNTAR EL NODO PARA ELIMINARLO 
+                    anterior.setSiguiente(temporal.getSiguiente());
+                    temporal = anterior.getSiguiente();
+                }
+
+            }
+
+        } else {
+
+            System.out.println("No hay elemetos para eliminar");
+        }
+
+    }
+
     public void ordenarMasculino() {
 
         if (cabeza != null) {
@@ -184,8 +228,8 @@ public class ListaSE {
                 if ("M".equals(temp.getDato().getSexo())) {
 
                     listaTemporal.adicionarNodoAlInicio(temp.getDato());
-                    
-                } else  {
+
+                } else {
 
                     listaTemporal.adicionarNodo(temp.getDato());
                 }
@@ -268,6 +312,113 @@ public class ListaSE {
         }
 
         return null;
+    }
+
+    public void intercambiarPosicionesSE(int posUno, int posDos) {
+
+        Perro tempUno = buscarPosicion(posUno);
+        Perro temDos = buscarPosicion(posDos);
+
+        Nodo temp = cabeza;
+        int cont = 1;
+
+        if (posUno < posDos) {
+
+            while (temp.getSiguiente() != null && cont != posUno) {
+
+                cont++;
+                temp = temp.getSiguiente();
+
+            }
+
+            if (cont == posUno) {
+
+                temp.setDato(temDos);
+                cont = 1;
+                temp = cabeza;
+            }
+
+            while (temp.getSiguiente() != null && cont != posDos) {
+
+                cont++;
+                temp = temp.getSiguiente();
+
+            }
+
+            if (cont == posDos) {
+
+                temp.setDato(tempUno);
+
+            }
+
+        } else if (posUno > posDos) {
+
+            while (temp.getSiguiente() != null && cont != posDos) {
+
+                cont++;
+                temp = temp.getSiguiente();
+
+            }
+
+            if (cont == posDos) {
+
+                temp.setDato(tempUno);
+                cont = 1;
+                temp = cabeza;
+            }
+
+            while (temp.getSiguiente() != null && cont != posUno) {
+
+                cont++;
+                temp = temp.getSiguiente();
+
+            }
+
+            if (cont == posUno) {
+
+                temp.setDato(temDos);
+
+            }
+
+        }
+
+    }
+
+    public void agregarEnPosicionSE(Perro dato, int posicion) {
+
+        if (cabeza != null) {
+
+            if (posicion == 1) {
+
+                
+                Nodo nuevo = new Nodo(dato);
+                nuevo.setSiguiente(cabeza);
+                cabeza = nuevo;
+
+            } else {
+
+                Nodo temp = cabeza;
+                int cont = 1;
+
+                while (cont != posicion - 1) {
+
+                    temp = temp.getSiguiente();
+
+                    cont++;
+                }
+                //PARADO EN ESA POSICION
+
+                Nodo nuevo = new Nodo(dato);
+                nuevo.setSiguiente(temp.getSiguiente());
+                temp.setSiguiente(nuevo);
+
+            }
+
+        } else {
+
+            cabeza = new Nodo(dato);
+        }
+
     }
 
 }
