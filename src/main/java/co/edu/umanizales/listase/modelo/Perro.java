@@ -6,6 +6,7 @@
 package co.edu.umanizales.listase.modelo;
 
 import java.io.Serializable;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
@@ -14,11 +15,15 @@ import java.io.Serializable;
 public class Perro implements Serializable{
    private String nombre;
    private byte numero;
-   private byte edad;
+   private byte edad; 
    private String sexo;
+   
+   private int numeroSuma;
 
     public Perro() {
     }
+    
+    
 
    
     public Perro(String nombre, byte numero, byte edad, String sexo) {
@@ -26,6 +31,18 @@ public class Perro implements Serializable{
         this.numero = numero;
         this.edad = edad;
         this.sexo = sexo;
+    }
+
+    public Perro(int numeroSuma) {
+        this.numeroSuma = numeroSuma;
+    }
+
+    public int getNumeroSuma() {
+        return numeroSuma;
+    }
+
+    public void setNumeroSuma(int numeroSuma) {
+        this.numeroSuma = numeroSuma;
     }
     
     

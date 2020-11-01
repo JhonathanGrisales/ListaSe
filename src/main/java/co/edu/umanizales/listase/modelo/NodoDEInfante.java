@@ -11,44 +11,44 @@ import java.io.Serializable;
  *
  * @author Jhony
  */
-public class NodoDE implements Serializable{
+public class NodoDEInfante implements Serializable{
     
-     private Perro dato;
+     private Infante dato;
      
-    private NodoDE siguienteDE;
-    private NodoDE anteriorDE;
+    private NodoDEInfante siguienteDE;
+    private NodoDEInfante anteriorDE;
 
-    public NodoDE(Perro dato) {
+    public NodoDEInfante(Infante dato) {
         this.dato = dato;
     }
+    
+    
 
-    public Perro getDato() {
+    public Infante getDato() {
         return dato;
     }
 
-    public void setDato(Perro dato) {
+    public void setDato(Infante dato) {
         this.dato = dato;
     }
 
-    public NodoDE getSiguienteDE() {
+    public NodoDEInfante getSiguienteDE() {
         return siguienteDE;
     }
 
-    public void setSiguienteDE(NodoDE siguienteDE) {
+    public void setSiguienteDE(NodoDEInfante siguienteDE) {
         this.siguienteDE = siguienteDE;
     }
 
-    public NodoDE getAnteriorDE() {
+    public NodoDEInfante getAnteriorDE() {
         return anteriorDE;
     }
 
-    public void setAnteriorDE(NodoDE anteriorDE) {
+    public void setAnteriorDE(NodoDEInfante anteriorDE) {
         this.anteriorDE = anteriorDE;
     }
 
-    
-    
-
+   
     
     
     

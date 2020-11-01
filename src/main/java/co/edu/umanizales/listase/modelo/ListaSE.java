@@ -5,6 +5,9 @@
  */
 package co.edu.umanizales.listase.modelo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author carloaiza
@@ -34,6 +37,7 @@ public class ListaSE {
      * si no tiene perros El perro entrante Es la cabeza
      */
     public void adicionarNodo(Perro dato) {
+
         if (cabeza == null) {
             //No tiene perros
             cabeza = new Nodo(dato);
@@ -75,6 +79,7 @@ public class ListaSE {
      * @param perro Dato a agregar *
      */
     public void adicionarNodoAlInicio(Perro perro) {
+
         if (cabeza != null) {
             Nodo temp = new Nodo(perro);
             temp.setSiguiente(cabeza);
@@ -390,7 +395,6 @@ public class ListaSE {
 
             if (posicion == 1) {
 
-                
                 Nodo nuevo = new Nodo(dato);
                 nuevo.setSiguiente(cabeza);
                 cabeza = nuevo;
@@ -419,6 +423,21 @@ public class ListaSE {
             cabeza = new Nodo(dato);
         }
 
+    }
+
+    public Set<Integer> numero() {
+        
+       Set<Integer> numeros = new HashSet<>();
+
+        for (; numeros.size() < 7;) {
+            int numero = (int) (Math.random() * 49) + 1;
+            if (!numeros.add(numero)) {
+                System.out.println(numero + " descartado por estar repetido.");
+            }
+        }
+        return numeros;
+
+     
     }
 
 }
