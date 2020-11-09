@@ -14,12 +14,27 @@ import java.io.Serializable;
 public class NodoDEInfante implements Serializable{
     
      private Infante dato;
+     private OportunidadNiño datoDos;
      
     private NodoDEInfante siguienteDE;
     private NodoDEInfante anteriorDE;
 
+    public NodoDEInfante(OportunidadNiño datoDos) {
+        this.datoDos = datoDos;
+    }
+    
+    
+
     public NodoDEInfante(Infante dato) {
         this.dato = dato;
+    }
+
+    public OportunidadNiño getDatoDos() {
+        return datoDos;
+    }
+
+    public void setDatoDos(OportunidadNiño datoDos) {
+        this.datoDos = datoDos;
     }
     
     

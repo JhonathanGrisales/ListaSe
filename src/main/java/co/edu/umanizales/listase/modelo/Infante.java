@@ -5,11 +5,13 @@
  */
 package co.edu.umanizales.listase.modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jhony
  */
-public class Infante {
+public class Infante implements Serializable{
     
     private String nombre;
    
