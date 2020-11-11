@@ -93,12 +93,15 @@ public class ProbarListaSE {
         Infante kira = new Infante("Kira", (byte) 3, "Masculino");
         OportunidadNiño niño3 = new OportunidadNiño(kira, (byte) 1);
         
-        listaPerros.adicionarNodoAlfinal(niño3);
+//        listaPerros.adicionarNodoEnSPosicion(niño3, 2);
+        listaPerros.adicionarNodoPorPosicion(niño3, 3);
+//listaPerros.adicionarNiñoAlinicioDeCircular(niño3);
 
         System.out.println("Finalizo");
 
 //        listaPerros.eliminarNiños("niña");
         listaPerros.mostrarListaDEC();
+        
 
 //        System.out.println("Finalizo");
     }

@@ -109,11 +109,13 @@ public class ListaDECInfante {
 
             while (recorrer.getSiguienteDE() != cabezaInfante) {
 
-                System.out.println("[ " + recorrer.getDatoDos().getInfante().getNombre() + "]");
+                System.out.println("[ " + recorrer.getDatoDos().getInfante().getNombre() + "]" + "Sgte "
+                        + recorrer.getSiguienteDE().getDatoDos().getInfante().getNombre() + " Ante" + recorrer.getAnteriorDE().getDatoDos().getInfante().getNombre());
                 recorrer = recorrer.getSiguienteDE();
             }
 
-            System.out.println("[ " + recorrer.getDatoDos().getInfante().getNombre() + "]");
+            System.out.println("[ " + recorrer.getDatoDos().getInfante().getNombre() + "]" + "Sgte "
+                    + recorrer.getSiguienteDE().getDatoDos().getInfante().getNombre() + " Ante" + recorrer.getAnteriorDE().getDatoDos().getInfante().getNombre());
 
         } else {
 
@@ -313,11 +315,11 @@ public class ListaDECInfante {
     }
 
 //    METODO PARA AGREGAR EN POSICION DADA 
-    public void adicionarNodoEnSPosicion(OportunidadNiño dato, int posicion) {
+    public void adicionarNodoEnSPosicion(OportunidadNiño dato, int pos) {
 
         if (cabezaInfante != null) {
 
-            if (posicion == 1) {
+            if (pos == 1) {
 
                 adicionarNiñoAlinicioDeCircular(dato);
 
@@ -333,23 +335,27 @@ public class ListaDECInfante {
                     temp = temp.getSiguienteDE();
                     cont++;
 
-                    if (cont == posicion) {
+                    if (cont == pos) {
 
-                        listaTemporal.adicionarNodoAlfinal(dato);
+                        NodoDEInfante nuevo = new NodoDEInfante(dato);
+
+                        listaTemporal.adicionarNodoAlfinal(nuevo.getDatoDos());
                         adicionarNodoAlfinal(temp.getDatoDos());
 
                     }
 
                 }
 
-                if (posicion > cont) {
+                if (pos > contarNodosDEC()) {
 
+                    NodoDEInfante nuevo = new NodoDEInfante(dato);
                     listaTemporal.adicionarNodoAlfinal(temp.getDatoDos());
-                    listaTemporal.adicionarNodoAlfinal(dato);
+                    listaTemporal.adicionarNodoAlfinal(nuevo.getDatoDos());
 
                 }
 
                 cabezaInfante = listaTemporal.getCabezaInfante();
+
             }
 
         } else {
@@ -387,6 +393,42 @@ public class ListaDECInfante {
             cabezaInfante.setSiguienteDE(cabezaInfante);
             cabezaInfante.setAnteriorDE(cabezaInfante);
 
+        }
+
+    }
+
+    public void adicionarNodoPorPosicion(OportunidadNiño dato, int pos) {
+
+        if (cabezaInfante != null) {
+            int cont = 1;
+            if (pos == cont) {
+
+                adicionarNiñoAlinicioDeCircular(dato);
+
+            } else {
+
+                NodoDEInfante temp = cabezaInfante;
+
+                while (cont != pos - 1 && temp.getSiguienteDE() != null) {
+
+                    temp = temp.getSiguienteDE();
+                    cont++;
+                }
+                if (temp.getSiguienteDE() == null) {
+
+                    adicionarNodoAlfinal(dato);
+                } else {
+                    NodoDEInfante temp1 = temp.getSiguienteDE();
+                    temp.setSiguienteDE(new NodoDEInfante(dato));
+                    temp.getSiguienteDE().setSiguienteDE(temp1);
+                    temp1.setAnteriorDE(temp.getSiguienteDE());
+                    temp.getSiguienteDE().setAnteriorDE(temp);
+
+                }
+            }
+
+        } else {
+            adicionarNodoAlfinal(dato);
         }
 
     }
